@@ -1,9 +1,6 @@
-package com.mergeSort;
+package com.sort;
 
-/**
- * Try to do this in-place.
- */
-public class BottomUpMergeSort implements MergeSort {
+public class BottomUpMergeSort implements SortingAlgos {
 
   @Override
   public int[] sort(int[] input) {
@@ -53,3 +50,4 @@ public class BottomUpMergeSort implements MergeSort {
     return input;
   }
 }
+
