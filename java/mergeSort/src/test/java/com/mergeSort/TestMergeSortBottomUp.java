@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+import java.util.Arrays;
+
 public class TestMergeSortBottomUp {
   private MergeSort mergeSort;
 
@@ -49,5 +52,40 @@ public class TestMergeSortBottomUp {
     int input[] = new int[] { 10, 2, 6, 7, 3 };
     int output[] = mergeSort.sort(input);
     assertArrayEquals(new int[] { 2, 3, 6, 7, 10 }, output);
+  }
+
+  @Test
+  public void sortSixElems() {
+    int input[] = new int[] { 10, 2, 6, 7, 3, 8 };
+    int output[] = mergeSort.sort(input);
+    assertArrayEquals(new int[] { 2, 3, 6, 7, 8, 10 }, output);
+  }
+
+  @Test
+  public void sortTwentyRandomElems() {
+    int len = 20;
+    int input[] = new int[len];
+    Random rand = new Random(System.currentTimeMillis());
+    for (int i = 0; i < len; i++) {
+      input[i] = rand.nextInt(100);
+    }
+
+    int a[] = Arrays.copyOf(input, len);
+    Arrays.sort(a);
+    assertArrayEquals(a, mergeSort.sort(input));
+  }
+
+  @Test
+  public void sortOneHundredRandomElems() {
+    int len = 100;
+    int input[] = new int[len];
+    Random rand = new Random(System.currentTimeMillis());
+    for (int i = 0; i < len; i++) {
+      input[i] = rand.nextInt(100);
+    }
+
+    int a[] = Arrays.copyOf(input, len);
+    Arrays.sort(a);
+    assertArrayEquals(a, mergeSort.sort(input));
   }
 }
