@@ -43,22 +43,11 @@ public class TestMergeSortBottomUp {
     int output[] = mergeSort.sort(input);
     assertArrayEquals(new int[] { 1, 2 }, output);
   }
-  
+
   @Test
   public void sortFiveElems() {
-    int input[] = new int[] {10, 2, 6, 7, 3};
+    int input[] = new int[] { 10, 2, 6, 7, 3 };
     int output[] = mergeSort.sort(input);
-    assertArrayEquals(new int[] {2, 3, 6, 7, 10}, output);
-  }
-
-  @Test
-  public void testSwap() {
-    int[] input = new int[] { 1, 2 };
-    input = mergeSort.swap(input, 0, 1);
-    assertArrayEquals(new int[] { 2, 1 }, input);
-
-    input = new int[] { 1, 2, 3 };
-    input = mergeSort.swap(input, 0, 2);
-    assertArrayEquals(new int[] { 3, 2, 1 }, input);
+    assertArrayEquals(new int[] { 2, 3, 6, 7, 10 }, output);
   }
 }
