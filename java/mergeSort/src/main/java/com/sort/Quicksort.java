@@ -42,13 +42,13 @@ public class Quicksort implements SortingAlgos {
 
   /** Ref: https://en.wikipedia.org/wiki/Quicksort#Implementation_issues */
   private int[] moveMedianPivotToLastPos(int[] input, int lo, int hi) {
-    int median = lo + ((hi - lo) >> 1);
-    if (input[median] < input[lo])
-      input = swap(input, median, lo);
+    int middleIndex = lo + ((hi - lo) >> 1);
+    if (input[middleIndex] < input[lo])
+      input = swap(input, middleIndex, lo);
     if (input[hi] < input[lo])
       input = swap(input, hi, lo);
-    if (input[median] < input[hi])
-      input = swap(input, median, hi);
+    if (input[middleIndex] < input[hi])
+      input = swap(input, middleIndex, hi);
 
     return input;
   }

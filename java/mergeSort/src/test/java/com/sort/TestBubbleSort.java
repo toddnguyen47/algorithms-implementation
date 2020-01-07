@@ -10,12 +10,12 @@ import com.sort.SortingAlgos;
 import java.util.Random;
 import java.util.Arrays;
 
-public class TestQuicksort {
+public class TestBubbleSort {
   private SortingAlgos sortingAlgo;
 
   @BeforeEach
   public void setup() {
-    sortingAlgo = new Quicksort();
+    sortingAlgo = new BubbleSort();
   }
 
   @Test
