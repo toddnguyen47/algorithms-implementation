@@ -1,5 +1,6 @@
 package com.main;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import com.sort.BottomUpMergeSort;
@@ -63,8 +64,11 @@ public class App {
 
   private void executeSorting(SortingAlgos sortingAlgo, int[] input) {
     long startTime = System.currentTimeMillis();
-    sortingAlgo.sort(input);
+    int[] output = sortingAlgo.sort(input);
     long endTime = System.currentTimeMillis();
+    Arrays.sort(input);
+    for (int i = 0, i2 = output.length; i < i2; i++)
+      assert (input[i] == output[i]);
     System.out.println("Time Taken: " + (endTime - startTime) + " ms");
   }
 
