@@ -2,7 +2,7 @@ package com.github.toddnguyen47.sieveOfEratosthenes;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ public class SieveOfEratosthenesTest {
   private SieveOfEratosthenes sieve;
 
   private Integer[] getArrOfPrimes(int max) {
-    LinkedList<Integer> listOfPrimes = this.sieve.getPrimes(max);
+    List<Integer> listOfPrimes = this.sieve.getPrimes(max);
     Integer[] arrOfPrimes = listOfPrimes.stream().toArray(Integer[]::new);
     return arrOfPrimes;
   }
@@ -43,5 +43,17 @@ public class SieveOfEratosthenesTest {
   public void getListOfPrimes_MaxNine_ReturnTwoThreeFiveSeven() {
     Integer[] arrOfPrimes = getArrOfPrimes(9);
     assertArrayEquals(arrOfPrimes, new Integer[] { 2, 3, 5, 7 });
+  }
+
+  @Test
+  public void max21_returnEightNumbers() {
+    Integer[] arrOfPrimes = getArrOfPrimes(21);
+    assertArrayEquals(arrOfPrimes, new Integer[] { 2, 3, 5, 7, 11, 13, 17, 19 });
+  }
+
+  @Test
+  public void max30_returnTenNumbers() {
+    Integer[] arrOfPrimes = getArrOfPrimes(30);
+    assertArrayEquals(arrOfPrimes, new Integer[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 });
   }
 }
