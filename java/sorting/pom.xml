@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com</groupId>
-  <artifactId>mergeSort</artifactId>
+  <artifactId>sortingAlgorithms</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>mergeSort</name>
+  <name>Sorting Algorithms</name>
   <url>http://maven.apache.org</url>
 
   <properties>

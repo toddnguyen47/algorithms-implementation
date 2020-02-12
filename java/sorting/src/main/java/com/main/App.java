@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.sort.BottomUpMergeSort;
-import com.sort.BubbleSort;
+import com.sort.BubbleSortImproved;
 import com.sort.Quicksort;
 import com.sort.SortingAlgos;
 
@@ -49,7 +49,7 @@ public class App {
 
   private void executeBubbleSort(int[] input) {
     System.out.print("Using Bubble Sort | ");
-    executeSorting(new BubbleSort(), input);
+    executeSorting(new BubbleSortImproved(), input);
   }
 
   private void executeMergeSort(int[] input) {

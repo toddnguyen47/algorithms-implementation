@@ -1,6 +1,6 @@
 package com.sort;
 
-public class BubbleSort implements SortingAlgos {
+public class BubbleSortImproved extends BubbleSort {
   /**
    * After every pass, all elements after the last swap are sorted and do not need
    * to be checked again

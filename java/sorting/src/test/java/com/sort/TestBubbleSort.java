@@ -1,14 +1,12 @@
 package com.sort;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import java.util.Arrays;
+import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.sort.SortingAlgos;
-
-import java.util.Random;
-import java.util.Arrays;
 
 public class TestBubbleSort {
   private SortingAlgos sortingAlgo;
