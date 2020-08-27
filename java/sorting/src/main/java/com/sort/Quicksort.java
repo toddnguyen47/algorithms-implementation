@@ -7,17 +7,27 @@ public class Quicksort implements SortingAlgos {
     if (input == null || input.length < 2)
       return input;
 
-    return sortRecursively(input, 0, input.length - 1);
+    this.sortRecursively(input, 0, input.length - 1);
+    return input;
   }
 
-  private int[] sortRecursively(int[] input, int lo, int hi) {
+  private void sortRecursively(int[] input, int lo, int hi) {
     // Base case: if size of "partition" is 0 or 1
     if ((hi - lo) < 1)
-      return input;
+      return;
 
     input = moveMedianPivotToLastPos(input, lo, hi);
-    int left = lo;
+    int pivotIndex = this.lomutoPartition(input, lo, hi);
+
+    // Pivot is in the correct index!
+    // Sort left and right subarray
+    this.sortRecursively(input, lo, pivotIndex - 1);
+    this.sortRecursively(input, pivotIndex + 1, hi);
+  }
+
+  private int lomutoPartition(int[] input, int lo, int hi) {
     int pivotIndex = hi;
+    int left = lo;
 
     while (pivotIndex > left) {
       // Move left index until the element is greater than the element of the
@@ -33,11 +43,7 @@ public class Quicksort implements SortingAlgos {
       }
     }
 
-    // Pivot is in the correct index!
-    // Sort left and right subarray
-    input = this.sortRecursively(input, lo, pivotIndex - 1);
-    input = this.sortRecursively(input, pivotIndex + 1, hi);
-    return input;
+    return pivotIndex;
   }
 
   /** Ref: https://en.wikipedia.org/wiki/Quicksort#Implementation_issues */
