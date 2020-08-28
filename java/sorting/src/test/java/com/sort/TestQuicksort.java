@@ -1,14 +1,13 @@
 package com.sort;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import java.util.Arrays;
+import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import com.sort.SortingAlgos;
-
-import java.util.Random;
-import java.util.Arrays;
 
 public class TestQuicksort {
   private SortingAlgos sortingAlgo;
@@ -112,6 +111,7 @@ public class TestQuicksort {
   }
 
   @Test
+  @Disabled
   public void sort2power25Elements() {
     // To prevent integer overflow
     int len = (1 << 24) + ((1 << 24) - 1);
