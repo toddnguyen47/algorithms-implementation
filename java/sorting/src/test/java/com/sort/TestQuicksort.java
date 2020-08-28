@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TestQuicksort {
@@ -111,7 +110,6 @@ public class TestQuicksort {
   }
 
   @Test
-  @Disabled
   public void sort2power25Elements() {
     // To prevent integer overflow
     int len = (1 << 24) + ((1 << 24) - 1);
@@ -121,6 +119,40 @@ public class TestQuicksort {
     Arrays.sort(a);
     assertArrayEquals(a, sortingAlgo.sort(a));
   }
+
+  @Test
+  public void testHoarePartitionNoDup() {
+    int[] input = new int[] { 5, 8, 2, 3, 1, 6, 4 };
+    Quicksort quicksort = new Quicksort();
+    int lo = 0;
+    int hi = input.length - 1;
+    quicksort.moveMedianPivotToLastPos(input, lo, hi);
+//    for (int i : input)
+//      System.out.print(i + ", ");
+//     Now the input array is {3, 8, 2, 5, 1, 6, 4}
+    quicksort.hoarePartition(input, lo, hi);
+    assertArrayEquals(new int[] { 3, 4, 2, 1, 5, 6, 8 }, input);
+  }
+
+  @Test
+  public void testHoarePartitionDup() {
+    int[] input = new int[] { 5, 8, 4, 7, 4, 7, 3 };
+    Quicksort quicksort = new Quicksort();
+    int lo = 0;
+    int hi = input.length - 1;
+    quicksort.moveMedianPivotToLastPos(input, lo, hi);
+//    for (int i : input)
+//      System.out.print(i + ", ");
+//     Now the input array is { 3, 8, 4, 7, 4, 7, 5 }
+    quicksort.hoarePartition(input, lo, hi);
+    // Even though this isn't sorted, it's okay
+    // We will sort {3,5,4,7,4} and {7,8}
+    assertArrayEquals(new int[] { 3, 5, 4, 7, 4, 7, 8 }, input);
+  }
+
+  // ------------------------------------------------------
+  // PRIVATE FUNCTIONS
+  // ------------------------------------------------------
 
   private int[] generateRandomInputArray(int len) {
     int input[] = new int[len];

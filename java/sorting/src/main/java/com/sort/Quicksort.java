@@ -16,7 +16,7 @@ public class Quicksort implements SortingAlgos {
     if ((hi - lo) < 1)
       return;
 
-    this.moveMedianPivotToLastPos(input, lo, hi);
+//    int pivotIndex = this.lomutoPartition(input, lo, hi);
     int pivotIndex = this.hoarePartition(input, lo, hi);
 
     // Pivot is in the correct index!
@@ -33,7 +33,7 @@ public class Quicksort implements SortingAlgos {
    * @param hi
    * @return
    */
-  private int hoarePartition(int[] input, int lo, int hi) {
+  public int hoarePartition(int[] input, int lo, int hi) {
     int pivotIndex = (lo + hi) >> 1;
     int pivotValue = input[pivotIndex];
     int left = lo;
@@ -43,9 +43,7 @@ public class Quicksort implements SortingAlgos {
         left += 1;
       while (input[right] > pivotValue)
         right -= 1;
-      // Everything is in order, return the new pivot index.
-      // At this pivot index, everything to the left is smaller than input[pivotIndex]
-      // Everything to the right is larger than input[pivotIndex]
+
       if (left >= right) {
         pivotIndex = right;
         break;
@@ -70,7 +68,8 @@ public class Quicksort implements SortingAlgos {
    * @param hi
    * @return pivotIndex
    */
-  private int lomutoPartition(int[] input, int lo, int hi) {
+  public int lomutoPartition(int[] input, int lo, int hi) {
+    this.moveMedianPivotToLastPos(input, lo, hi);
     int pivotIndex = hi;
     int left = lo;
 
@@ -92,7 +91,7 @@ public class Quicksort implements SortingAlgos {
   }
 
   /** Reference: https://en.wikipedia.org/wiki/Quicksort#Implementation_issues */
-  private void moveMedianPivotToLastPos(int[] input, int lo, int hi) {
+  public void moveMedianPivotToLastPos(int[] input, int lo, int hi) {
     int middleIndex = lo + ((hi - lo) >> 1);
     if (input[middleIndex] < input[lo])
       this.swap(input, middleIndex, lo);
