@@ -17,7 +17,7 @@ public class LomutoPartition implements Partition {
 
     // Elements [lo, desiredPivotIndex - 1] are < than pivot
     // Elements [desiredPivotIndex, j] are >= pivot
-    for (int j = lo; j <= hi; j++) {
+    for (int j = lo; j < hi; j++) {
       if (input[j] < pivotValue) {
         this.swapObj_.swap(input, desiredPivotIndex, j);
         desiredPivotIndex += 1;
