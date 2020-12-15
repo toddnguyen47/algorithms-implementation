@@ -3,7 +3,7 @@ package com.toddnguyen47.adventofcode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day2PasswordPolicy {
+public class Day2PasswordPolicy implements ISolution {
   private List<String> _lines = new ArrayList<>();
 
   public void execute(List<String> lines) {

@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day1AddUpTo2020 {
+public class Day1AddUpTo2020 implements ISolution {
   private List<String> _lines = new ArrayList<>();
 
-  public void addUpTo2020(List<String> lines) {
+  public void execute(List<String> lines) {
     this._lines = lines;
+    this.addUpTo2020();
+  }
+
+  public void addUpTo2020() {
     List<Integer> listOfInts = this._lines.stream().map((s1) -> Integer.valueOf(s1))
         .collect(Collectors.toList());
     int size = listOfInts.size();
