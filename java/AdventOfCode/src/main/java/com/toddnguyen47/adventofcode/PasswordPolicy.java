@@ -8,10 +8,32 @@ public class PasswordPolicy {
 
   public void execute(List<String> lines) {
     this._lines = lines;
-    this.bruteForce();
+    this.passwordPosition();
   }
 
-  private void bruteForce() {
+  private void passwordPosition() {
+    int count = 0;
+    for (String line : this._lines) {
+      String[] split = line.split(":");
+      String[] beforeColon = split[0].split(" ");
+      String[] times = beforeColon[0].trim().split("-");
+      int pos1 = Integer.valueOf(times[0]);
+      int pos2 = Integer.valueOf(times[1]);
+      char letter = beforeColon[1].trim().charAt(0);
+      String password = split[1].trim();
+
+      boolean valid1 = password.charAt(pos1 - 1) == letter;
+      boolean valid2 = password.charAt(pos2 - 1) == letter;
+
+      // Check if only ONE of the booleans is valid
+      if ((valid1 && !valid2) || (!valid1 && valid2)) {
+        count += 1;
+      }
+    }
+    CustomPrint.print("Count: %d", count);
+  }
+
+  private void bruteForceCharRange() {
     int count = 0;
     for (String line : this._lines) {
       String[] split = line.split(":");
