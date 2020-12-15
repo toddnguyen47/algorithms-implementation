@@ -1,4 +1,4 @@
-package com.toddnguyen47.adventofcode;
+package com.toddnguyen47.adventofcode.solution;
 
 import java.util.List;
 

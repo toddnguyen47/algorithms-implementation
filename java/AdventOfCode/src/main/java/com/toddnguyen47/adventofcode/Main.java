@@ -7,6 +7,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.toddnguyen47.adventofcode.solution.Day3Trees;
+import com.toddnguyen47.adventofcode.solution.ISolution;
+
 public class Main {
   public static void main(String[] args) {
     Main app = new Main();

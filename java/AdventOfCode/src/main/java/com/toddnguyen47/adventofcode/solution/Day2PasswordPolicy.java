@@ -1,7 +1,9 @@
-package com.toddnguyen47.adventofcode;
+package com.toddnguyen47.adventofcode.solution;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.toddnguyen47.adventofcode.CustomPrint;
 
 public class Day2PasswordPolicy implements ISolution {
   private List<String> _lines = new ArrayList<>();
