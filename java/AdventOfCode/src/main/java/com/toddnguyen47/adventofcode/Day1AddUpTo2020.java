@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AddUpTo2020 {
+public class Day1AddUpTo2020 {
   private List<String> _lines = new ArrayList<>();
 
   public void addUpTo2020(List<String> lines) {

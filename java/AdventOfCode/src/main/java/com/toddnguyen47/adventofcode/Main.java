@@ -40,7 +40,7 @@ public class Main {
   }
 
   private void execAlgorithm() {
-    PasswordPolicy pwPolicy = new PasswordPolicy();
+    Day2PasswordPolicy pwPolicy = new Day2PasswordPolicy();
     pwPolicy.execute(this._lines);
   }
 }

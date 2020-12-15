@@ -3,7 +3,7 @@ package com.toddnguyen47.adventofcode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PasswordPolicy {
+public class Day2PasswordPolicy {
   private List<String> _lines = new ArrayList<>();
 
   public void execute(List<String> lines) {
