@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.toddnguyen47.adventofcode.solution.Day3Trees;
+import com.toddnguyen47.adventofcode.solution.Day4Passport;
 import com.toddnguyen47.adventofcode.solution.ISolution;
 
 public class Main {
@@ -43,7 +43,7 @@ public class Main {
   }
 
   private void execAlgorithm() {
-    ISolution solution = new Day3Trees();
+    ISolution solution = new Day4Passport();
     solution.execute(this._lines);
   }
 }
