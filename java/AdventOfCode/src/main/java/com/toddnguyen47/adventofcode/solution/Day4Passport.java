@@ -48,6 +48,7 @@ public class Day4Passport implements ISolution {
       Passport passport = iter.next();
       if (passport.isPassportValid()) {
         count += 1;
+        System.out.println(count);
         System.out.println(passport);
         System.out.println("---");
       }
@@ -101,42 +102,48 @@ public class Day4Passport implements ISolution {
     }
 
     private boolean isBirthYearValid() {
-      if (!this.infoMap.containsKey(this.BYR))
+      if (!this.infoMap.containsKey(this.BYR)) {
         return false;
+      }
 
       int birthYear = Integer.valueOf(this.infoMap.get(this.BYR));
       return 1920 <= birthYear && birthYear <= 2002;
     }
 
     private boolean isIssueYearValid() {
-      if (!this.infoMap.containsKey(this.IYR))
+      if (!this.infoMap.containsKey(this.IYR)) {
         return false;
+      }
 
       int issueYear = Integer.valueOf(this.infoMap.get(this.IYR));
       return 2010 <= issueYear && issueYear <= 2020;
     }
 
     private boolean isExpirationYearValid() {
-      if (!this.infoMap.containsKey(this.EYR))
+      if (!this.infoMap.containsKey(this.EYR)) {
         return false;
+      }
 
       int expirationYear = Integer.valueOf(this.infoMap.get(this.EYR));
       return 2020 <= expirationYear && expirationYear <= 2030;
     }
 
     private boolean isHeightValid() {
-      if (!this.infoMap.containsKey(this.HGT))
+      if (!this.infoMap.containsKey(this.HGT)) {
         return false;
+      }
 
       String height = this.infoMap.get(this.HGT);
       Matcher digitMatcher = this.digitPattern.matcher(height);
-      if (!digitMatcher.find())
+      if (!digitMatcher.find()) {
         return false;
+      }
       int heightInt = Integer.valueOf(digitMatcher.group(0));
 
       Matcher heightUnitMatcher = this.nondigitPattern.matcher(height);
-      if (!heightUnitMatcher.find())
+      if (!heightUnitMatcher.find()) {
         return false;
+      }
       String unit = heightUnitMatcher.group(0);
 
       if (unit.equals("cm")) {
@@ -149,17 +156,23 @@ public class Day4Passport implements ISolution {
     }
 
     private boolean isHairColorValid() {
-      if (!this.infoMap.containsKey(this.HCL))
+      if (!this.infoMap.containsKey(this.HCL)) {
         return false;
+      }
 
       String hairColor = this.infoMap.get(this.HCL);
+      // Check if hair color contains exactly 7 characters (# + hex digit code)
+      if (hairColor.length() != 7) {
+        return false;
+      }
       Matcher m = this.colorPattern.matcher(hairColor);
       return m.find();
     }
 
     private boolean isEyeColorValid() {
-      if (!this.infoMap.containsKey(this.ECL))
+      if (!this.infoMap.containsKey(this.ECL)) {
         return false;
+      }
 
       String eyeColor = this.infoMap.get(this.ECL);
       return eyeColor.equals("amb") || eyeColor.equals("blu") || eyeColor.equals("brn")
@@ -168,10 +181,16 @@ public class Day4Passport implements ISolution {
     }
 
     private boolean isPid() {
-      if (!this.infoMap.containsKey(this.PID))
+      if (!this.infoMap.containsKey(this.PID)) {
         return false;
+      }
 
       String pid = this.infoMap.get(this.PID);
+      // Check if PID is exactly 9 characters
+      if (pid.length() != 9) {
+        return false;
+      }
+
       Matcher m = this.pidPattern.matcher(pid);
       return m.find();
     }
