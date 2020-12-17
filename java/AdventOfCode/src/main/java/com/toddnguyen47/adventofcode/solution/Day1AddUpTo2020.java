@@ -30,6 +30,7 @@ public class Day1AddUpTo2020 implements ISolution {
     }
   }
 
+  @SuppressWarnings("unused")
   private void sortAndStuff() {
     // Sort the list first
     List<Integer> listOfInts = this._lines.stream().map((s1) -> Integer.valueOf(s1))

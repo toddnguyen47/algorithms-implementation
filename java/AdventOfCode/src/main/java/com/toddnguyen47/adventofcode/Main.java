@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.toddnguyen47.adventofcode.solution.Day4Passport;
+import com.toddnguyen47.adventofcode.solution.Day5BinaryBoarding;
 import com.toddnguyen47.adventofcode.solution.ISolution;
 
 public class Main {
@@ -37,13 +37,12 @@ public class Main {
     try {
       this._lines = Files.readAllLines(path);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
   private void execAlgorithm() {
-    ISolution solution = new Day4Passport();
+    ISolution solution = new Day5BinaryBoarding();
     solution.execute(this._lines);
   }
 }

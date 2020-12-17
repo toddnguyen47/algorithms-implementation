@@ -35,6 +35,7 @@ public class Day2PasswordPolicy implements ISolution {
     CustomPrint.print("Count: %d", count);
   }
 
+  @SuppressWarnings("unused")
   private void bruteForceCharRange() {
     int count = 0;
     for (String line : this._lines) {
