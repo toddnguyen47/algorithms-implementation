@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.toddnguyen47.adventofcode.solution.Day5BinaryBoarding;
+import com.toddnguyen47.adventofcode.solution.Day6CustomCustoms;
 import com.toddnguyen47.adventofcode.solution.ISolution;
 
 public class Main {
@@ -42,7 +42,7 @@ public class Main {
   }
 
   private void execAlgorithm() {
-    ISolution solution = new Day5BinaryBoarding();
+    ISolution solution = new Day6CustomCustoms();
     solution.execute(this._lines);
   }
 }

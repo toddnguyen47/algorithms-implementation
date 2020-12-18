@@ -18,7 +18,6 @@ public class Day5BinaryBoarding implements ISolution {
     this.findMissingId();
   }
 
-  @SuppressWarnings("unused")
   private int findMissingId() {
     Set<Integer> setOfIds = new HashSet<>();
     int maxId = 0;
