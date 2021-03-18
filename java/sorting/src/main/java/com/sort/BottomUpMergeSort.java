@@ -19,7 +19,7 @@ public class BottomUpMergeSort implements SortingAlgos {
     int nLen = input.length;
     int temp[] = new int[nLen];
 
-    // Width in this case is the halfWidth of the array that WILL be merged
+    // halfWidth in this case is the halfWidth of the array that WILL be merged
     // e.g. if we are merging a[] and b[], halfWidth is the len() of a[] and b[]
     for (int halfWidth = 1; halfWidth < nLen; halfWidth *= 2) {
       int width = halfWidth * 2;
