@@ -11,18 +11,30 @@ import com.sort.SortingAlgos;
 public class App {
   public static void main(String[] args) {
     App app = new App();
-    app.execute();
+    try {
+      app.execute();
+    } catch (NoEnumCaseException e) {
+      e.printStackTrace();
+    }
 
     System.out.println("Finished!");
   }
 
   private Random rand = null;
 
+  private enum Algorithm {
+    BUBBLE_SORT, MERGE_SORT, QUICKSORT
+  };
+
+  private class NoEnumCaseException extends Exception {
+    private static final long serialVersionUID = -5838819035646043590L;
+  }
+
   public App() {
     rand = new Random(System.currentTimeMillis());
   }
 
-  public void execute() {
+  public void execute() throws NoEnumCaseException {
 //    int len = (1 << 24) + ((1 << 24) - 1);
     int len = 100000;
     int randomInput[] = generateRandomInputArray(len);
@@ -30,19 +42,23 @@ public class App {
     executeSortingRandomly(randomInput);
   }
 
-  private void executeSortingRandomly(int[] randomInput) {
+  private void executeSortingRandomly(int[] randomInput) throws NoEnumCaseException {
     int[] randomOrder = shuffleDurstenfeld(new int[] { 0, 1, 2 });
     for (int i : randomOrder) {
-      switch (i) {
-      case 0:
+      Algorithm algo = Algorithm.values()[i];
+
+      switch (algo) {
+      case BUBBLE_SORT:
         executeBubbleSort(randomInput.clone());
         break;
-      case 1:
+      case MERGE_SORT:
         executeMergeSort(randomInput.clone());
         break;
-      case 2:
+      case QUICKSORT:
         executeQuickSort(randomInput.clone());
         break;
+      default:
+        throw new NoEnumCaseException();
       }
     }
   }
@@ -53,12 +69,12 @@ public class App {
   }
 
   private void executeMergeSort(int[] input) {
-    System.out.print("Using Merge Sort | ");
+    System.out.print("Using Merge Sort  | ");
     executeSorting(new BottomUpMergeSort(), input);
   }
 
   private void executeQuickSort(int[] input) {
-    System.out.print("Using Quicksort | ");
+    System.out.print("Using Quicksort   | ");
     executeSorting(new Quicksort(), input);
   }
 
