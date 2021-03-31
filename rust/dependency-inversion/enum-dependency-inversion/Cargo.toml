@@ -1,0 +1,10 @@
+[package]
+authors = ["Todd Nguyen"]
+edition = "2018"
+name = "enum_dependency_inversion"
+version = "0.1.1"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sorting_algos = {path = "../sorting-algos"}
