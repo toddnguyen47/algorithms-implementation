@@ -30,8 +30,8 @@ jobs:
       run: cargo build --verbose
 
   test:
-    needs: [build]
     runs-on: ubuntu-latest
+    needs: [build]
     defaults:
       run:
         working-directory: rust/dependency-inversion/sorting-algos
