@@ -16,6 +16,8 @@ jobs:
       run:
         working-directory: rust/dependency-inversion/sorting-algos
     steps:
+    - name: checkout
+      uses: actions/checkout@v2
     - name: cache
     - uses: actions/cache@v2
       with:
@@ -24,8 +26,6 @@ jobs:
           ~/.cargo/git
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-    - name: checkout
-      uses: actions/checkout@v2
     - name: Build
       run: cargo build --verbose
 
