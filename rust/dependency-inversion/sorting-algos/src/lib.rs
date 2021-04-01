@@ -17,19 +17,19 @@
 use std::fmt::Debug;
 
 pub mod factory;
-pub mod i_sorting;
+pub mod isorting;
 
 mod merge_sort;
 mod quicksort;
 
 /// Sort the `arr` using `sorting_algorithm` created by `factory`
-pub fn sort<T>(sorting_algorithm: i_sorting::Sorting, arr: &mut [T]) -> &mut [T]
+pub fn sort<T>(sorting_algorithm: isorting::ISorting, arr: &mut [T]) -> &mut [T]
 where
     T: core::cmp::PartialOrd + core::marker::Copy + Debug,
 {
     let arr = match sorting_algorithm {
-        i_sorting::Sorting::MergeSort(merge_sort) => merge_sort.sort(arr),
-        i_sorting::Sorting::Quicksort(quicksort) => quicksort.sort(arr),
+        isorting::ISorting::MergeSort(merge_sort) => merge_sort.sort(arr),
+        isorting::ISorting::Quicksort(quicksort) => quicksort.sort(arr),
     };
     arr
 }
