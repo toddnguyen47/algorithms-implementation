@@ -21,9 +21,10 @@ public class NodeTest {
   }
 
   @Test
-  public void emptyNeighborsWhenCreated() {
+  public void testGivenSuccess_WhenCreatingNode_ThenNeighborsShouldBeEmptyAndNodeShouldNotHaveBeenvisited() {
     Node<Integer> n = new Node<>(initNodeVal);
     assertEquals(0, n.neighbors.size());
+    assertEquals(false, n.visited);
   }
 
   @Test
@@ -31,7 +32,7 @@ public class NodeTest {
     int val = 10;
     Node<Integer> neighborNode = new Node<Integer>(val);
     node.addNeighbor(neighborNode);
-    
+
     assertEquals(node.neighbors.size(), 1);
     assertEquals(node.neighbors.get(0), neighborNode);
     assertEquals(node.neighbors.get(0).val, val);
