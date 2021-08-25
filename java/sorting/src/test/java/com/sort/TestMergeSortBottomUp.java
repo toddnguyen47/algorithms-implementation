@@ -15,7 +15,7 @@ public class TestMergeSortBottomUp {
 
   @BeforeEach
   public void setup() {
-    sortingAlgo = new BottomUpMergeSort();
+    sortingAlgo = new MergeSortBottomUp();
   }
 
   @Test

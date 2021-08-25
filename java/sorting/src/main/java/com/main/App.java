@@ -3,7 +3,7 @@ package com.main;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.sort.BottomUpMergeSort;
+import com.sort.MergeSortBottomUp;
 import com.sort.BubbleSort;
 import com.sort.Quicksort;
 import com.sort.SortingAlgos;
@@ -70,7 +70,7 @@ public class App {
 
   private void executeMergeSort(int[] input) {
     System.out.print("Using Merge Sort  | ");
-    executeSorting(new BottomUpMergeSort(), input);
+    executeSorting(new MergeSortBottomUp(), input);
   }
 
   private void executeQuickSort(int[] input) {

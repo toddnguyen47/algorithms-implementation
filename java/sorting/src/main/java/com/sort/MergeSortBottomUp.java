@@ -8,7 +8,7 @@ package com.sort;
  * @author Todd Nguyen
  *
  */
-public class BottomUpMergeSort implements SortingAlgos {
+public class MergeSortBottomUp implements SortingAlgos {
 
   @Override
   public int[] sort(int[] input) {
