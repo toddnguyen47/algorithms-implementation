@@ -3,10 +3,10 @@ package com.main;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.sort.MergeSortBottomUp;
 import com.sort.BubbleSort;
 import com.sort.Quicksort;
 import com.sort.SortingAlgos;
+import com.sort.mergesort.MergeSortBottomUp;
 
 public class App {
   public static void main(String[] args) {

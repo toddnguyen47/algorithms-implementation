@@ -1,4 +1,6 @@
-package com.sort;
+package com.sort.mergesort;
+
+import com.sort.SortingAlgos;
 
 /**
  * Bottom up merge sort implementation.

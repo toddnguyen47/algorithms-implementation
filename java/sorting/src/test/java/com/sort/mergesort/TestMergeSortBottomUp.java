@@ -1,4 +1,4 @@
-package com.sort;
+package com.sort.mergesort;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.sort.SortingAlgos;
+import com.sort.mergesort.MergeSortBottomUp;
 
 import java.util.Random;
 import java.util.Arrays;
