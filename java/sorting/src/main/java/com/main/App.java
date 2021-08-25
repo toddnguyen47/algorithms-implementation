@@ -3,10 +3,8 @@ package com.main;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.sort.BubbleSort;
-import com.sort.Quicksort;
 import com.sort.SortingAlgos;
-import com.sort.mergesort.MergeSortBottomUp;
+import com.sort.SortingFactory;
 
 public class App {
   public static void main(String[] args) {
@@ -23,7 +21,7 @@ public class App {
   private Random rand = null;
 
   private enum Algorithm {
-    BUBBLE_SORT, MERGE_SORT, QUICKSORT
+    BUBBLE_SORT, MERGE_SORT_BOTTOM_UP, MERGE_SORT_TOP_DOWN, QUICKSORT
   };
 
   private class NoEnumCaseException extends Exception {
@@ -36,14 +34,14 @@ public class App {
 
   public void execute() throws NoEnumCaseException {
 //    int len = (1 << 24) + ((1 << 24) - 1);
-    int len = 100000;
+    int len = 100_000;
     int randomInput[] = generateRandomInputArray(len);
     System.out.println("Sorting " + len + " elements");
     executeSortingRandomly(randomInput);
   }
 
   private void executeSortingRandomly(int[] randomInput) throws NoEnumCaseException {
-    int[] randomOrder = shuffleDurstenfeld(new int[] { 0, 1, 2 });
+    int[] randomOrder = shuffleDurstenfeld(new int[] { 0, 1, 2, 3 });
     for (int i : randomOrder) {
       Algorithm algo = Algorithm.values()[i];
 
@@ -51,8 +49,11 @@ public class App {
       case BUBBLE_SORT:
         executeBubbleSort(randomInput.clone());
         break;
-      case MERGE_SORT:
-        executeMergeSort(randomInput.clone());
+      case MERGE_SORT_BOTTOM_UP:
+        executeMergeSortBottomUp(randomInput.clone());
+        break;
+      case MERGE_SORT_TOP_DOWN:
+        executeMergeSortTopDown(randomInput.clone());
         break;
       case QUICKSORT:
         executeQuickSort(randomInput.clone());
@@ -65,17 +66,22 @@ public class App {
 
   private void executeBubbleSort(int[] input) {
     System.out.print("Using Bubble Sort | ");
-    executeSorting(new BubbleSort(), input);
+    executeSorting(SortingFactory.createBubbleSortImproved(), input);
   }
 
-  private void executeMergeSort(int[] input) {
-    System.out.print("Using Merge Sort  | ");
-    executeSorting(new MergeSortBottomUp(), input);
+  private void executeMergeSortBottomUp(int[] input) {
+    System.out.print("Using Merge Sort Bottom Up | ");
+    executeSorting(SortingFactory.createMergeSortBottomUp(), input);
+  }
+
+  private void executeMergeSortTopDown(int[] input) {
+    System.out.print("Using Merge Sort Top Down | ");
+    executeSorting(SortingFactory.createMergeSortTopDown(), input);
   }
 
   private void executeQuickSort(int[] input) {
-    System.out.print("Using Quicksort   | ");
-    executeSorting(new Quicksort(), input);
+    System.out.print("Using Quicksort | ");
+    executeSorting(SortingFactory.createQuicksort(), input);
   }
 
   private void executeSorting(SortingAlgos sortingAlgo, int[] input) {
