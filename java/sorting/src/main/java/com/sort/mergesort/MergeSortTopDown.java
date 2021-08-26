@@ -25,7 +25,8 @@ public class MergeSortTopDown implements SortingAlgos {
    */
   private void mergeSort(int[] input, int[] helper, final int lo, final int hi) {
     if (lo < hi) {
-      final int mi = lo + ((hi - lo) / 2);
+      final int size = hi - lo;
+      final int mi = lo + (size / 2);
       // sort left and right side
       mergeSort(input, helper, lo, mi);
       mergeSort(input, helper, mi + 1, hi);

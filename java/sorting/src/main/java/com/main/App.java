@@ -41,7 +41,7 @@ public class App {
   }
 
   private void executeSortingRandomly(int[] randomInput) throws NoEnumCaseException {
-    int[] randomOrder = shuffleDurstenfeld(new int[] { 0, 1, 2, 3 });
+    int[] randomOrder = shuffleDurstenfeld(getEnumOrder());
     for (int i : randomOrder) {
       Algorithm algo = Algorithm.values()[i];
 
@@ -130,5 +130,14 @@ public class App {
     }
 
     return input;
+  }
+
+  private int[] getEnumOrder() {
+    int enumLen = Algorithm.values().length;
+    int[] order = new int[enumLen];
+    for (int i = 0; i < enumLen; i++) {
+      order[i] = i;
+    }
+    return order;
   }
 }
