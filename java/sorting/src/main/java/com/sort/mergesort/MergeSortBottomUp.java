@@ -18,61 +18,55 @@ public class MergeSortBottomUp implements SortingAlgos {
       return input;
     }
 
-    int nLen = input.length;
-    int temp[] = new int[nLen];
-
-    // halfWidth in this case is the halfWidth of the array that WILL be merged
-    // e.g. if we are merging a[] and b[], halfWidth is the len() of a[] and b[]
-    for (int halfWidth = 1; halfWidth < nLen; halfWidth *= 2) {
-      int width = halfWidth * 2;
-      for (int lo = 0; lo < nLen; lo += width) {
-        int hi = Math.min(lo + width - 1, nLen - 1);
-        // We cannot use Math.floor((lo + hi) / 2) as that would assume that
-        // the width is (hi - lo), while in fact the width is halfWidth * 2
-        // e.g. if there are 20 elements, on the last merge,
-        // lo: 0, mid: 15, hi: 19 with (mid = lo + halfWidth - 1)
-        // If we use Math.floor((lo + hi) / 2), then
-        // lo: 0, mid: 9, hi: 19
-        // which will NOT work since our left and right indices are NOT properly aligned
-        int mid = lo + halfWidth - 1;
-        input = this.merge(input, temp, lo, mid, hi);
+    int inputLen = input.length;
+    int helperArray[] = new int[inputLen];
+    // Iterate through sizes, increasing by a power of 2 each time. O(lg n)
+    // We will stop the loop when half of the size is larger than the whole
+    // input size, e.g. that means the array should already be sorted
+    for (int size = 1; size / 2 < inputLen; size *= 2) {
+      // Iterate through each element and sort the smaller array
+      // O(n)
+      for (int lo = 0; lo < inputLen; lo += size) {
+        int hi = Math.min(inputLen - 1, lo + size - 1);
+        // mi has to be calculated using the size, NOT hi. Otherwise some halves
+        // will not be counted
+        int mi = Math.min(inputLen - 1, lo + (size / 2) - 1);
+        // Merge the two halves
+        merge(input, helperArray, lo, mi, hi);
       }
     }
 
     return input;
   }
 
-  private int[] merge(int[] input, int[] temp, int lo, int mid, int hi) {
-//    System.out.println(String.format("%d, %d, %d", lo, mid, hi));
-    // Copy the section to temp first
+  private void merge(int[] input, int[] helperArray, int lo, int mi, int hi) {
+    // Copy into helperArray
     for (int i = lo; i <= hi; i++) {
-      temp[i] = input[i];
+      helperArray[i] = input[i];
     }
 
-    int left = lo;
-    int right = mid + 1;
+    int leftPtr = lo;
+    int rightPtr = mi + 1;
 
-    // Merge back to input
-    for (int i = lo; i <= hi; i++) {
-      // If at the end, copy the rest back into input
-      if (left > mid) {
-        input[i] = temp[right];
-        right += 1;
-      } else if (right > hi) {
-        input[i] = temp[left];
-        left += 1;
-      }
-      // We aren't at the end yet, compare and obtain the
-      // element that's smallest
-      else if (temp[left] < temp[right]) {
-        input[i] = temp[left];
-        left += 1;
+    int currentIndex = lo;
+    while (leftPtr <= mi && rightPtr <= hi) {
+      if (helperArray[leftPtr] <= helperArray[rightPtr]) {
+        input[currentIndex] = helperArray[leftPtr];
+        leftPtr += 1;
       } else {
-        input[i] = temp[right];
-        right += 1;
+        input[currentIndex] = helperArray[rightPtr];
+        rightPtr += 1;
       }
+      currentIndex += 1;
     }
 
-    return input;
+    // Let's say we have [4, 21, 43] and [34, 56]
+    // We only have to add in the left side as the right side (56 in this case) is
+    // already present
+    while (leftPtr <= mi) {
+      input[currentIndex] = helperArray[leftPtr];
+      currentIndex += 1;
+      leftPtr += 1;
+    }
   }
 }

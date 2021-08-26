@@ -7,6 +7,8 @@ import com.sort.SortingAlgos;
 import com.sort.SortingFactory;
 
 public class App {
+  private final static int ARR_LEN = 100_000;
+
   public static void main(String[] args) {
     App app = new App();
     try {
@@ -33,10 +35,8 @@ public class App {
   }
 
   public void execute() throws NoEnumCaseException {
-//    int len = (1 << 24) + ((1 << 24) - 1);
-    int len = 100_000;
-    int randomInput[] = generateRandomInputArray(len);
-    System.out.println("Sorting " + len + " elements");
+    int randomInput[] = generateRandomInputArray(ARR_LEN);
+    System.out.println("Sorting " + ARR_LEN + " elements");
     executeSortingRandomly(randomInput);
   }
 
@@ -84,13 +84,24 @@ public class App {
     executeSorting(SortingFactory.createQuicksort(), input);
   }
 
+  /**
+   * 
+   * @param sortingAlgo
+   * @param input
+   * @throws RuntimeException
+   */
   private void executeSorting(SortingAlgos sortingAlgo, int[] input) {
     long startTime = System.currentTimeMillis();
-    int[] output = sortingAlgo.sort(input);
+    int[] output = sortingAlgo.sort(input.clone());
     long endTime = System.currentTimeMillis();
     Arrays.sort(input);
-    for (int i = 0, i2 = output.length; i < i2; i++)
-      assert (input[i] == output[i]);
+
+    assert input.length == output.length;
+    for (int i = 0, i2 = output.length; i < i2; i++) {
+      if (input[i] != output[i]) {
+        throw new RuntimeException("Either input array or output array is not sorted");
+      }
+    }
     System.out.println("Time Taken: " + (endTime - startTime) + " ms");
   }
 
