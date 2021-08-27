@@ -2,6 +2,7 @@ package com.sort;
 
 import com.sort.mergesort.MergeSortBottomUp;
 import com.sort.mergesort.MergeSortTopDown;
+import com.sort.partition.PartitionFactory;
 
 public class SortingFactory {
   private static BubbleSort bubbleSort = null;
@@ -26,7 +27,7 @@ public class SortingFactory {
 
   public static Quicksort createQuicksort() {
     if (quicksort == null) {
-      quicksort = new Quicksort();
+      quicksort = new Quicksort(PartitionFactory.createLomutoPartition());
     }
     return quicksort;
   }

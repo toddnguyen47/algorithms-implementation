@@ -8,12 +8,17 @@ import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.sort.partition.Partition;
+import com.sort.partition.PartitionFactory;
+
 public class TestQuicksort {
   private SortingAlgos sortingAlgo;
+  private Partition partition;
 
   @BeforeEach
   public void setup() {
-    sortingAlgo = new Quicksort();
+    partition = PartitionFactory.createLomutoPartition();
+    sortingAlgo = new Quicksort(partition);
   }
 
   @Test
