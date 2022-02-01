@@ -1,5 +1,5 @@
 #include "helpers.h"
-#include "stdio.h"
+#include <stdio.h>
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -81,8 +81,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             // Calculate the average of all surrounding rows
             for (int rowOffset = 0; rowOffset < dirLen; rowOffset++) {
                 for (int colOffset = 0; colOffset < dirLen; colOffset++) {
-                    const int newRow = row + rowOffset;
-                    const int newCol = col + colOffset;
+                    const int newRow = row + DIR[rowOffset];
+                    const int newCol = col + DIR[colOffset];
                     if (newRow >= 0 && newRow < height && newCol >= 0 && newCol < width) {
                         const RGBTRIPLE curTriple = image[newRow][newCol];
                         totalRed += curTriple.rgbtRed;

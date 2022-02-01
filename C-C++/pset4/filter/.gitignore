@@ -2,3 +2,9 @@ filter.dSYM
 target/
 
 filter
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode

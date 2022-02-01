@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Usage: ./run-executable -flag <input_image_in_images_folder>
+set -euxo pipefail
+
+# Usage: ./run-executable -flag <input_file>
 
 rm filter
 make
-mkdir target
-./filter "$1" images/"$2" target/"$2"
+mkdir -p target/images
+./filter "$1" "$2" target/"$2"
